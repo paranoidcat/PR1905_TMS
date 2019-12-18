@@ -1,0 +1,23 @@
+<% provide(:title, 'All Courses') %>
+<h1>All Courses</h1>
+
+<div>
+  <table style="width:100%">
+    <tr>
+      <th>Name</th>
+      <th>Introduction</th>
+    </tr>
+    <% @courses.each do |course| %>
+      <tr>
+        <td> <a href="<%= admin_course_path(course.id) %>"> <%= course.name %></a> </td>
+        <td><%= course.introduction %></td>
+        <td><%= link_to "Update", edit_admin_course_path(course) %> </td>
+        <td><%= link_to "delete", admin_course_path(course), method: :delete,
+                data: { confirm: "You sure?" } %> </td>
+      </tr>
+      <br>
+    <% end %>
+  </table>
+</div>
+
+<%= link_to "Create new course", new_admin_course_path, class: "btn btn-default"%>
