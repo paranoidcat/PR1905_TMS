@@ -1,0 +1,15 @@
+<table style = "width: 100%">
+      <caption> All tables </caption>
+      <tr> 
+        <th>Ten ng dung </th>
+        <th>Email </th>
+        <th>role </th>
+      </tr>
+      <% @users.each do |s| %>
+        <tr> 
+          <td><%= s.name%></td>
+          <td><%= s.email%></td>
+          <td><%= s.role %></td>
+        </tr>
+      <% end%>
+</table>
