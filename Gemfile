@@ -70,3 +70,5 @@ gem 'devise'
 gem "paranoia", "~> 2.2"
 
 gem 'cancancan'
+
+gem 'omniauth'

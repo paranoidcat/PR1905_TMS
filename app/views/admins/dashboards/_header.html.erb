@@ -11,19 +11,12 @@
 
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <% if current_user %>
-                    <li><%= link_to 'Edit Profile',edit_user_registration_path %></li>
-                    <li><%= link_to 'Edit Password',edit_user_password_path %></li>
-                    
-                    <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
-                <% elsif current_admin %>
+                <% if current_admin %>
                     <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
                     <li><%= link_to 'Edit Profile', edit_admin_registration_path %></li>
                     <li><%= link_to 'Edit Password', edit_admin_password_path %></li>
                     <li><%= link_to 'Logout', destroy_admin_session_path, method: :delete %></li>
-                <% else %>
-                    <li><%= link_to 'Login as Admin', new_admin_session_path%> </li>
-                    <li><%= link_to 'Login', new_user_session_path %></li>
+                    <li><%= link_to 'New Course', new_admins_course_path%>
                 <% end %>
             </ul>
         </div>
