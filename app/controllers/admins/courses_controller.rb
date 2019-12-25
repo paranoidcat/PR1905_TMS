@@ -1,4 +1,4 @@
-class Admin::CoursesController < Admin::BaseController
+class Admins::CoursesController < Admins::BaseController
   before_action :find_course, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -16,7 +16,7 @@ class Admin::CoursesController < Admin::BaseController
     @course = Course.new(course_params)
     if @course.save
       flash[:success] = "course created"
-      redirect_to admin_courses_path
+      redirect_to admins_course_path(@course)
     else
       flash.now[:danger] = "create course fail"
       render 'new'
@@ -29,7 +29,7 @@ class Admin::CoursesController < Admin::BaseController
   def update
     if @course.update_attributes(course_params)
       flash[:success] = "course updated"
-      redirect_to admin_courses_path
+      redirect_to admins_course_path(@course)
     else
       flash.now[:danger] = "update course fail"
       render 'edit'
@@ -39,7 +39,7 @@ class Admin::CoursesController < Admin::BaseController
   def destroy
     if @course.destroy
       flash[:success] = "course deleted"
-      redirect_to admin_courses_path
+      redirect_to admins_courses_path
     else
       flash.now[:danger] = "destroy course fail"
       render 'index'

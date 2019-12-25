@@ -9,10 +9,10 @@
     </tr>
     <% @courses.each do |course| %>
       <tr>
-        <td> <a href="<%= admin_course_path(course.id) %>"> <%= course.name %></a> </td>
+        <td> <a href="<%= admins_course_path(course.id) %>"> <%= course.name %></a> </td>
         <td><%= course.introduction %></td>
-        <td><%= link_to "Update", edit_admin_course_path(course) %> </td>
-        <td><%= link_to "delete", admin_course_path(course), method: :delete,
+        <td><%= link_to "Update", edit_admins_course_path(course) %> </td>
+        <td><%= link_to "delete", admins_course_path(course), method: :delete,
                 data: { confirm: "You sure?" } %> </td>
       </tr>
       <br>
@@ -20,4 +20,4 @@
   </table>
 </div>
 
-<%= link_to "Create new course", new_admin_course_path, class: "btn btn-default"%>
+<%= link_to "Create new course", new_admins_course_path, class: "btn btn-default"%>

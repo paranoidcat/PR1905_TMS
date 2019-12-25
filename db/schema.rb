@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2019_12_18_122850) do
     t.string "introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_courses_on_name", unique: true
   end
 
   create_table "exams", force: :cascade do |t|
@@ -46,6 +47,7 @@ ActiveRecord::Schema.define(version: 2019_12_18_122850) do
     t.string "introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_subjects_on_name", unique: true
   end
 
   create_table "user_courses", force: :cascade do |t|
