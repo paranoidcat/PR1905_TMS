@@ -18,11 +18,28 @@ class Users::SessionsController < Devise::SessionsController
   #   super 
   # end
   
-
-  # protected
-
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
+  # def create_using_facebook
+  #   @user = User.find_or_create_from_auth_hash(auth_hash)
+  #   self.current_user = @user
+  #   redirect_to '/'
   # end
+
+  def create_using_facebook
+    if request.env[‘omniauth.auth’]
+      user = User.create_with_omniauth(request.env[‘omniauth.auth’])
+      session[:user_id] = user.id    
+      redirect_to user_path(user.id)
+    else
+      user = User.find_by_email(params[:email])
+      user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect_to user_path(user.id)
+    end
+  end
+
+  protected
+
+  def auth_hash
+    request.env['omniauth.auth']
+  end    
 end
