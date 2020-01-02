@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action: current_user, only: [:update, :show]
+  
   def index 
     @users = User.all 
   end
@@ -21,7 +22,6 @@ class UsersController < ApplicationController
   private 
   def user_params
     params.require(:user).permit(:name, :email, :phone, :password,
-    :password_confirmation, :admin)
+      :password_confirmation, :admin)
   end
-
 end

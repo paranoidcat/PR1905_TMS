@@ -7,6 +7,12 @@
   </br> 
   <%= f.label :Introduction %>
   <%= f.text_area :introduction, class: 'form-control' %>
-  </br> 
+
+  <%= f.label :"Subject:" %><br>
+  <% @subjects.each do |subject| %>
+    <%= check_box_tag "course[subject_ids][]", subject.id, @course.subject_ids.include?(subject.id) %>
+    <%= subject.name %><br>
+  <% end %>
+
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>

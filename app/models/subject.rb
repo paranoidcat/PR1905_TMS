@@ -5,7 +5,7 @@ class Subject < ApplicationRecord
   validates :introduction,  presence: true, length: { maximum: 1000 }
   validates :instruction,  presence: true, length: { maximum: 500 }
 
-  has_many :subject_courses
+  has_many :subject_courses, dependent: :destroy
   has_many :courses, through: :subject_courses
 
   has_many :subject_exams

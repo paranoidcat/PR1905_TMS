@@ -1,5 +1,12 @@
 <% provide(:title, @course.name) %>
 <div class="show-course">
 <h1><%= @course.name %></h1>
+<h2> Introduction: </h2>
 <%= @course.introduction %>
+<h2> Subject: </h2>
+  <ul>
+    <% @course.subjects.each do |s| %>
+      <li><%= s.name %></li>
+      <% end %>
+  </ul>
 </div>
