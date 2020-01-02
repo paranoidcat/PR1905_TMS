@@ -67,8 +67,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 
-gem "paranoia", "~> 2.2"
+gem "acts_as_paranoid"
 
 gem 'cancancan'
 
 gem 'omniauth'
+
+gem 'omniauth-facebook'
