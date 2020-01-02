@@ -20,4 +20,11 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks" }
 
   resources :users
+
+  devise_scope :user do
+    delete 'sign_out', to: 'devise/sessions#destroy'
+  end
+
+  get 'auth/facebook/callback', to: 'sessions#create'
+  get 'auth/failure', to: 'static_pages#home'
 end
