@@ -34,4 +34,16 @@ class User < ApplicationRecord
       end
     end
   end
+
+  def following?(course)
+    user_courses.find_by(course_id: course.id)
+  end
+
+  def follow!(course)
+    user_courses.create!(course_id: course.id)
+  end
+
+  def unfollow!(course)
+    user_courses.find_by(course_id: course.id).destroy
+  end 
 end

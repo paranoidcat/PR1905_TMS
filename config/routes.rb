@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
   resources :users
 
+  resources :user_courses, only: [:create, :destroy]
+
   devise_scope :user do
     delete 'sign_out', to: 'devise/sessions#destroy'
   end
